@@ -15,14 +15,17 @@ class GoogleSearch(unittest.TestCase):
 
     def test_search_automationstepbystep(self):
         self.driver.get("https://google.com")
-        self.driver.find_element_by_name("q").send_keys("Automation Step by Step")
+        elem = self.driver.find_element_by_name("q")
+        elem.clear()
+        elem.send_keys("Automation Step by Step")
         time.sleep(2)
         self.driver.find_element_by_name("btnK").click()
 
     def test_search_la(self):
         self.driver.get("https://google.com")
-        self.driver.find_element_by_name("q").send_keys("Los Angeles")
-
+        elem2 = self.driver.find_element_by_name("q")
+        elem2.clear()
+        elem2.send_keys("Los Angeles")
         self.driver.find_element_by_name("btnK").send_keys(Keys.ENTER)
 
     def tearDown(self):
