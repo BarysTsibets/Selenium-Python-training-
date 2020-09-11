@@ -7,12 +7,11 @@ import time
 
 class GoogleSearch(unittest.TestCase):
 
-    @classmethod
-    def setUpClass(cls):
-        cls.driver = webdriver.Chrome(
+    def setUp(self):
+        self.driver = webdriver.Chrome(
             executable_path=r'C:\Users\BorisPC\PycharmProjects\untitled\HelloWorld\Automation\driver\chromedriver.exe')
-        cls.driver.implicitly_wait(10)
-        cls.driver.maximize_window()
+        self.driver.implicitly_wait(10)
+        self.driver.maximize_window()
 
     def test_search_automationstepbystep(self):
         self.driver.get("https://google.com")
@@ -26,10 +25,9 @@ class GoogleSearch(unittest.TestCase):
 
         self.driver.find_element_by_name("btnK").send_keys(Keys.ENTER)
 
-    @classmethod
-    def tearDownClass(cls):
-        cls.driver.close()
-        cls.driver.quit()
+    def tearDown(self):
+        self.driver.close()
+        self.driver.quit()
         print("Test Completed")
 
 
